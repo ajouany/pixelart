@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #625ac6
+}
+
+.main {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+#board {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.row {
+    display:flex;
+}
+
+.configuration {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3148ad;
+}
+
+.configuration button {
+    padding: 1em;
+    border-style: hidden;
+    font-size: 1.2em;
+    background: #9b68e4;
+    color: #fff;
+    border-radius: 0 .5em .5em 0;
+}
+
+.input-config {
+    padding: 1em;
+    border: 0;
+    font-size: 1.2em;
+    width: 10em;
+    margin-right: 2px;
+}
+
+#n-pixels {
+    border-radius: .5em 0 0 .5em;
+}
+
+#colorSelector {
+    width: 3em;
+    height: 3em; 
+    margin: 2em;
+    /* border-style: hidden; */
+    font-size: 1.2em;
+}
+
+label {
+    display: none;
+}
+
+@media screen and (max-width : 768px) {
+    .configuration * {
+        /* font-size: 2.4vw; */
+        /* padding: 0.5em; */
+        font-size: 1em;
+    }
+
+    .input-config
+     {
+        width: 25vw;
+        padding: 1.2em 0.5em;
+    } 
+
+    .input-config::placeholder {
+        font-size: 3vw;
+    }
+
+    .configuration button
+    {       
+       width: 20vw;
+       padding: 1.2em 0.5em;
+       font-size: 1em;
+   } 
+
+    #colorSelector {
+        width: 20vw;
+        margin: 0;
+        /* height:60%; */
+    }
+}
