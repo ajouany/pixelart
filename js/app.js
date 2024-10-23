@@ -7,6 +7,7 @@ const app = {
     },
 
     init: function() {
+
         app.createConfigForm();
         app.createBoard();
         app.parentElem = document.querySelector("#board");
@@ -72,6 +73,15 @@ const app = {
         app.colorSelectorElem.addEventListener('change',app.handleChangeColor);
 
         app.configElem.appendChild(app.colorSelectorElem);
+
+        // Export button
+        app.exportButtonElem = document.createElement("button");
+        app.exportButtonElem.id = "exportButton";
+        app.exportButtonElem.innerHTML = '<i class="fas fa-file-export"></i> Exporter';
+        app.exportButtonElem.type = "button"; // Prevent form submission
+        app.exportButtonElem.addEventListener("click", app.handleExport);
+
+        app.configElem.appendChild(app.exportButtonElem);   
     },
 
     createBoard: function(nPixel = 10, sizePixel = 20) {
@@ -125,6 +135,21 @@ const app = {
         app.pixelClickedElem = event.target;
         if(app.pixelClickedElem.classList.contains('pixel'))
             app.pixelClickedElem.style.backgroundColor = app.config.colorPixel;
+    },
+
+    handleExport: function() {
+        html2canvas(app.boardElem).then(function(canvas) {
+            const link = document.createElement('a');
+            
+            // Get current date and time
+            const now = new Date();
+            const dateString = now.toISOString().slice(0,19).replace(/[-:]/g, "").replace("T", "_");
+            
+            // Set the filename
+            link.download = `pixelart_${dateString}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
     }
 }  
 
